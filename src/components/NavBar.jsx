@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
-function navBar() {
+function NavBar() {
+  const count = useSelector((state) => state.cart.items);
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" >
-            Menu Bro!
-          </a>
+          <a class="navbar-brand">Menu Bro!</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -21,19 +21,19 @@ function navBar() {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <Link to={'/home'} class="nav-link" href="/">
+              <Link to={"/home"} class="nav-link" href="/">
                 Home
               </Link>
-              <Link to={'/property'} class="nav-link" href="/">
+              <Link to={"/property"} class="nav-link" href="/">
                 Properties
               </Link>
-              <Link to={'/user'} class="nav-link" href="/">
+              <Link to={"/user"} class="nav-link" href="/">
                 Users
               </Link>
-              <Link to={'/bookings'} class="nav-link" href="/">
-                Bookings
+              <Link to={"/bookings"} class="nav-link" href="/">
+                Bookings ({count})
               </Link>
-              <Link to={'/login'} class="nav-link" href="/">
+              <Link to={"/login"} class="nav-link" href="/">
                 Logout
               </Link>
             </div>
@@ -44,4 +44,4 @@ function navBar() {
   );
 }
 
-export default navBar;
+export default NavBar;

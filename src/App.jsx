@@ -7,16 +7,17 @@ import Home from './screens/Home';
 import Bookings from './screens/Bookings';
 import User from './screens/User';
 import Property from './screens/Property';
-import AddProperty from './screens/addProperty';
+
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import AddProperty from './screens/addProperty';
 
 
 
 function App() {
   return (
-    <div className="container">
+    <div className='container'>
       <Routes>
         <Route path='' element={<Login />} />
         <Route path='login' element={<Login />} />

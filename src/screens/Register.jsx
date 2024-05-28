@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
+import { register } from "../services/admin";
 
 function Register() {
 
@@ -12,35 +13,41 @@ function Register() {
 
     const navigate = useNavigate()
 
-    const signUp = () => {
+    const signUp = async () => {
         if (firstName.length == 0) {
-            toast.error('You have not Entered the First Name');
+            toast.error('Idiot! You have not Entered the First Name');
         }
         else if (lastName.length == 0) {
-            toast.error('You have not Entered the Last Name');
+            toast.error('Idiot! You have not Entered the Last Name');
         }
         else if (email.length == 0) {
-            toast.error('You have not Entered the Email');
+            toast.error('Idiot! You have not Entered the Email');
         }
 
         else if (password.length == 0) {
-            toast.error('You have not Entered the Password');
+            toast.error('Idiot! You have not Entered the Password');
         } else if (confirmPassword.length == 0) {
-            toast.error('You have not Entered the Password again');
+            toast.error('Idiot! You have not Entered the Password again');
         } else if (password != confirmPassword) {
-            toast.error('Password do not Match!');
+            toast.error('Moron! Password do not Match!');
         }
         else {
-            toast.success('Successfully registered a new user')
-            navigate('/login')
+            const result = await register(firstName, lastName, email, password)
+            if (result['status'] == 'success') {
+              toast.success('Successfully registered a new user')
+              navigate('/login')
+            } else {
+              toast.error(result['error'])
+            }
         }
     }
     const goBack = () => {
         navigate('/login')
     }
 
-    return (<div>
-        <div className="row">
+    return (<div style={{paddingTop: '100px'}}>
+        
+        <div className="row" >
             <div className="col-1"></div>
             <div className="col-7" style={{backgroundColor :'beige'}}>
                 <img style={{width:'650px' ,height: '600px'}} src="https://ideogram.ai/api/images/direct/xE1I_BMUR1GBp47cycVzDw.jpg" alt="" />

@@ -5,6 +5,9 @@ function User(){
         <div>
             <h3 style={{textAlign:'center'}}>Users Page</h3>
             <NavBar />
+            <div>
+                
+            </div>
         </div>
     )
 }
