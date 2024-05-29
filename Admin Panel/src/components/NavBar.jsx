@@ -5,11 +5,11 @@ function NavBar() {
   const count = useSelector((state) => state.cart.items);
   return (
     <div>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand">Menu Bro!</a>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand">Menu Bro!</a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup"
@@ -17,23 +17,23 @@ function NavBar() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <Link to={"/home"} class="nav-link" href="/">
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
+              <Link to={"/home"} className="nav-link" href="/">
                 Home
               </Link>
-              <Link to={"/property"} class="nav-link" href="/">
+              <Link to={"/property"} className="nav-link" href="/">
                 Properties
               </Link>
-              <Link to={"/user"} class="nav-link" href="/">
+              <Link to={"/user"} className="nav-link" href="/">
                 Users
               </Link>
-              <Link to={"/bookings"} class="nav-link" href="/">
+              <Link to={"/bookings"} className="nav-link" href="/">
                 Bookings ({count})
               </Link>
-              <Link to={"/login"} class="nav-link" href="/">
+              <Link to={"/login"} className="nav-link" href="/">
                 Logout
               </Link>
             </div>

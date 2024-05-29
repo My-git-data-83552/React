@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router";
 import NavBar from "../components/NavBar.jsx";
 import propertiesData from "../dummy/properties.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getProperties } from "../services/property.js";
+
 function Property() {
   const [properties, setProperties] = useState(propertiesData);
   const navigate = useNavigate();
@@ -10,10 +12,20 @@ function Property() {
     navigate("/addProperty");
   };
 
-  const onDelete=(index)=>{
-    properties.splice(index,1)
-    setProperties([...properties])
-  }
+  const onDelete = (index) => {
+    properties.splice(index, 1);
+    setProperties([...properties]);
+  };
+
+  const loadProperties = async () => {
+    const result = await getProperties();
+    if (result['status'] == 'success') {
+      setProperties(result["data"]);
+    }
+  };
+  useEffect(() => {
+    loadProperties()
+  }, []);
 
   return (
     <div>
@@ -24,8 +36,8 @@ function Property() {
       </button>
       <hr />
       <div>
-        <table class="table table-light table-sm">
-          <thead class="thead-dark">
+        <table className="table table-light table-sm">
+          <thead className="thead-dark">
             <tr>
               <th>#</th>
               <th>Title</th>
@@ -36,7 +48,7 @@ function Property() {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody class="table-group-divider">
+          <tbody className="table-group-divider">
             {properties.map((p, index) => {
               return (
                 <tr>
@@ -47,7 +59,9 @@ function Property() {
                   <td>{p["contactNo"]}</td>
                   <td>{p["rent"]}</td>
                   <td>
-                    <button onClick={onDelete} className="btn btn-danger bt-sm">delete</button>
+                    <button onClick={onDelete} className="btn btn-danger bt-sm">
+                      delete
+                    </button>
                   </td>
                 </tr>
               );
