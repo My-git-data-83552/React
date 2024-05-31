@@ -9,6 +9,7 @@ export default function () {
 
   const navigate = useNavigate();
 
+
   const onRegister = () => {
     navigate("/register");
   };

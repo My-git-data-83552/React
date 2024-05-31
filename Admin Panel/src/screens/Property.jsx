@@ -4,6 +4,7 @@ import propertiesData from "../dummy/properties.json";
 import { useEffect, useState } from "react";
 import { getProperties } from "../services/property.js";
 
+
 function Property() {
   const [properties, setProperties] = useState(propertiesData);
   const navigate = useNavigate();

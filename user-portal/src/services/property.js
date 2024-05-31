@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export function getProperties() {
+export async function getProperties() {
   try {
     const token = sessionStorage.token;
-    const response = axios.get("http://localhost:4000/property", {
+    const response = await axios.get("http://localhost:4000/property", {
       headers: { token },
     });
     return response.data
